@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class UpdateDescriptionFiledOnSensorDataTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('sensor_data', function (Blueprint $table) {
+            $table->renameColumn('description', 'extra_data');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('sensor_data', function (Blueprint $table) {
+            $table->renameColumn('extra_data', 'description');
+        });
+    }
+}
